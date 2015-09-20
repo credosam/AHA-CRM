@@ -15,10 +15,13 @@ app = Flask(__name__, static_url_path='')
 def index():
 	return render_template("index.html")
 
-@app.route("/login", methods=['GET', 'POST'])
+@app.route("/login", methods=['GET','POST'])
 def login():
-	print "YO"
-	return redirect("/login")
-
+	# import pdb; pdb.set_trace()
+	if(request.form['username'] == 'tanmay' and request.form['password'] == 'aha3d'):
+		return render_template('dealer.html')
+	else:
+		return render_template("index.html")
+		# return "yoo"
 if __name__ == "__main__":
 	app.run()
