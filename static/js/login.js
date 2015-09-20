@@ -1,34 +1,34 @@
 aha = {
 	search: function(){
-		username = $("#username").val();
-		password = $("#password").val();
-		data = JSON.parse(JSON.stringify({"username":username, "password":password}));
+		var username = $("#username").val();
+		var password = $("#password").val();
+		var data = JSON.parse(JSON.stringify({"username":username, "password":password}));
 		$.ajax({
-			url : "/login",
+			url : "login",
 			type : "POST",
 			data : data,
-			dataType : "json",
-			contentType: "application/json",
+			// dataType : "json",
+			// contentType: "text/json",
 			success : function(data){
 				console.log(data);
 				alert(data);
+			},
+			error : function(data){
+				alert("error");
 			}
-			// error : function(){
-
-			// }
 		});
+		alert("YO!!");
 		console.log(username);
 		console.log(password);
 	},
 	login: function(){
 		$(document).ready(function(){
 			// if($("#username").val()=="tanmay" && $("#password").val()=="aha3d"){
-				alert("YO!!");
 				aha.search();
 			// }
 		});
 	}
 }
-$("#loginform").submit(function(){
-	aha.login();
-});
+// $("#loginform").submit(function(){
+// 	aha.login();
+// });

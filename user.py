@@ -18,7 +18,7 @@ def index():
 @app.route("/login", methods=['GET', 'POST'])
 def login():
 	print "YO"
-	return "YO!!!"
+	return redirect("/login")
 
 if __name__ == "__main__":
 	app.run()
