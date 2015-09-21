@@ -1,9 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>AHA CRM</title>
+<style>
+#add{
+	display:none;
+}
+</style>
 </head>
 <body>
-	Fuck yeahh!!
+
+<table id="myTable" border=1px;>
+<tr>
+<td>Name</td>
+<td>Mobile No.</td>
+<td>E-mail</td>
+<td>Status of Deal</td>
+<td>Comments</td>
+</tr>
+</table>
+
+<p>Click the button to append an item to the end of the list.</p>
+
+<button onclick="myFunction()">Enter</button>
+
+<div id="add">
+Name:<input type="text" id="1">
+Mobile no:<input type="number" id="2">
+E-mail:<input type="text" id="3">
+Status of Deal:<select name="deal" id="4">
+  <option value="0">Ongoing</option>
+  <option value="1">Accepted</option>
+  <option value="2">Closed</option>
+</select>
+Comments:<input type="text" id="5">
+<button onclick="myfunc2()">Submit</button>
+</div>
+
+<!--<button onclick="func()">Final Submit</button>-->
+<script>
+function myFunction() {
+    document.getElementById('add').style.display = "block";
+	}
+var rows=1;
+function myfunc2()
+{
+	var table=document.getElementById("myTable");
+	document.getElementById('add').style.display = "none";
+	var i;
+	var row = table.insertRow(rows);
+	row.onclick="func()";
+	for(i=0;i<5;i++)
+	{
+	var cell =row.insertCell(i);
+	//cell id="cell1";
+	if(i==4)
+	cell.contentEditable=true;
+if(i==3)
+	{	var select1=document.createElement("SELECT"); 
+		select1.id="mySelect";
+		var x = document.createElement("OPTION");
+    var t = document.createTextNode("Ongoing");
+	x.appendChild(t);
+	var x1 = document.createElement("OPTION");
+    var t = document.createTextNode("Accepted");
+	x1.appendChild(t);
+	var x2 = document.createElement("OPTION");
+    var t = document.createTextNode("Closed");
+	x2.appendChild(t);
+	select1.appendChild(x);
+	select1.appendChild(x1);
+	select1.appendChild(x2);
+    cell.appendChild(select1);
+    select1.selectedIndex=document.getElementById(4).value;
+	}
+	if(i!=3) 
+	cell.innerHTML = document.getElementById(i+1).value;
+	}
+	rows++;
+}
+/*function func()
+{
+	var x = document.getElementById("mySelect").selectedIndex;
+    var y = document.getElementById("mySelect").options;
+    alert("Index: " + y[x].index + " Status of Deal is " + y[x].text);
+}*/
+</script>
 </body>
 </html>
